@@ -29,3 +29,16 @@ Token de prueba: encabezado `X-Token: secreto-de-prueba`.
 `calcular_total`, `aplicar_descuento`, `calcular_iva`, `clasificar_edad`,
 `normalizar_email`, `leer_config` (E/S), `crear_pedido` (integración, `llama_a`).
 Ver `BUGS.md` para los bugs sembrados.
+
+## Frameworks de prueba (SPK de alcance)
+
+El mismo dominio (pedidos, descuento, clasificación de edad) en tres frameworks:
+
+| Carpeta | Framework | Cliente de pruebas | Ejecutar |
+|---|---|---|---|
+| `.` (`app/`) | FastAPI | `TestClient` | `pip install -r requirements.txt && pytest` |
+| `flask_demo/` | Flask | `app.test_client()` | `cd flask_demo && pip install -r requirements.txt && pytest` |
+| `django_demo/` | Django | `Client` + `pytest-django` | `cd django_demo && pip install -r requirements.txt && pytest` |
+
+Cada carpeta tiene sus propias dependencias y su `pytest.ini`; se prueban por separado.
+Los bugs sembrados están en `BUGS.md`. Los fallos de pytest son esperados.
